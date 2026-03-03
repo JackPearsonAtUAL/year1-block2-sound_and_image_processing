@@ -1,7 +1,10 @@
-### Welcome to SIP!
+# Sound and Image Processing
+### Disclaimer
+Unless stated withing a week's ReadMe.md, AI has not been used to generate, debug or modify any of the code provided.
 
-This is a README file. It's in MarkdDown (MD) format, a standard format for coding documentation.
+### Weekly Tasks
+Information for each weekly task is heald within 
 
-https://www.markdownguide.org/cheat-sheet/
+Week 1: `week_01/readme.md`
 
-test push
+Week 2: `week_02/readme.md` 

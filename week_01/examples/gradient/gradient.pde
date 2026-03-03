@@ -1,34 +1,60 @@
 //Gradient variables
-boolean isOnXAxis = true;
-int gradientNum = 1;
-int lastGradient;
+public boolean isOnXAxis = true;
+public int gradientNum = 0;
+public int lastGradient;
 
 //Colour variables
-int colour_red = 255;
-int colour_green = 0;
-int colour_blue = 255;
-color leftC = color(0, 0, 0);
-color rightC = color(0, 0, 0);
+public int colour_red = 255;
+public int colour_green = 0;
+public int colour_blue = 255;
+public color leftC = color(0, 0, 0);
+public color rightC = color(0, 0, 0);
 
 void setup() {
   size(300, 300);
 }
 
 void draw() {
-  getPalette(gradientNum);
+  getPalette(gradientNum, isOnXAxis);
+}
+
+void keyPressed() {
+  if (keyCode == LEFT && 0 < gradientNum){
+    gradientNum--;
+    System.out.println(gradientNum);
+    getPalette(gradientNum, isOnXAxis);
+  }
+
+  if (keyCode == RIGHT && gradientNum < 5){
+    gradientNum++;
+    System.out.println(gradientNum);
+    getPalette(gradientNum, isOnXAxis);
+  }
+  
+  if (keyCode == UP && gradientNum < 5){
+    isOnXAxis = !isOnXAxis;
+    System.out.println("up");
+    getPalette(gradientNum, isOnXAxis);
+  }
+
+  if (keyCode == DOWN && gradientNum < 5){
+    isOnXAxis = !isOnXAxis;
+    System.out.println("down");
+    getPalette(gradientNum, isOnXAxis);
+  }
 }
 
 //Uses the gradientNum to determine the gradient
-void getPalette(int i) {
+void getPalette(int i, boolean a) {
   if (i == 0){
     makeGradient();
   }
   if (i == 1){
-    makeGradient(leftC, rightC, isOnXAxis);
+    makeGradient(leftC, rightC, a);
   }
 }
 
-void makeGradient() {
+public void makeGradient() {
   loadPixels();
   for (int x = 0; x < width; x++) {
     for (int y = 0; y < height; y++) {
@@ -46,6 +72,12 @@ void makeGradient() {
       pixels[x + y * width] = c; // Correctly index the 1D pixel array
     }
   }
+  
+  if (!isOnXAxis){
+    push();
+    rotateZ(180);
+    pop();
+  }
   updatePixels();
 }
 
@@ -53,7 +85,7 @@ void makeGradient() {
 Resource used for code assistance:
 https://processing.org/examples/lineargradient.html
 */
-void makeGradient(color c1, color c2, boolean axis){
+public void makeGradient(color c1, color c2, boolean axis){
   noFill();
   
   if (axis){
@@ -74,14 +106,4 @@ void makeGradient(color c1, color c2, boolean axis){
   }
 }
 
-void keyPressed() {
-  if (keyCode == LEFT && 0 < gradientNum){
-    gradientNum--;
-  }
 
-  if (keyCode == RIGHT && gradientNum < 5){
-    gradientNum++;
-  }
-  
-  getPalette(gradientNum);
-}
