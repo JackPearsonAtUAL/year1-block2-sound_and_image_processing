@@ -23,7 +23,7 @@ void draw(){
 
 public void DrawSquares(float f){
   pushMatrix();
-    fill(153,50,204);
+    fill(153,f*30,204);
     translate(xpos + (f*50), height/2);
     rotate(radians(angle *f));
     rect(0, 0, 50, 50); // notice the position is 0,0
