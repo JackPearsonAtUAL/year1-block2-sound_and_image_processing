@@ -45,24 +45,27 @@ void keyPressed() {
 void getPalette(int i, int a) {
   if (i == 0){
     // Gradient link: https://coolors.co/gradient-maker/ff1b6b-45caff
-    leftC = color(255, 27, 107);
-    rightC = color(69, 202, 255);
+    leftC = color(179, 20, 76);//255, 27, 107
+    rightC = color(55, 162, 204);//69, 202, 255
     makeGradient(leftC, rightC, a);
   }
   if (i == 1){
+    // Colour palette link: https://coolors.co/palette/ff6ad5-c774e8-ad8cff-8795e8-94d0ff
     // Gradient link: https://coolors.co/gradient-maker/f756aa-f75672
-    leftC = color(247, 86, 170);
-    rightC = color(247, 86, 114);
+    leftC = color(249, 133, 193); // Original colour: 247, 86, 170
+    rightC = color(250, 133, 152); // Original colour: 247, 86, 114
     makeGradient(leftC, rightC, a);
   }
   if (i == 2){
-    leftC = color(10, 255, 100);
-    rightC = color(90, 100, 20);
+    // Gradient link: https://coolors.co/gradient-maker/f7ba2c-ea5459
+    leftC = color(247, 186, 44);
+    rightC = color(234, 84, 89);
     makeGradient(leftC, rightC, a);
   }
   if (i == 3){
-    leftC = color(10, 255, 100);
-    rightC = color(90, 100, 20);
+    // Gradient link: https://coolors.co/gradient-maker/bf0fff-cbff49
+    leftC = color(191, 15, 255);
+    rightC = color(203, 255, 73);
     makeGradient(leftC, rightC, a);
   }
   if (i == 4){
