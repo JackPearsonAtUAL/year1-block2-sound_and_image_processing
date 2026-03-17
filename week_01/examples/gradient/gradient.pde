@@ -6,47 +6,56 @@ public int lastGradient;
 //Colour variables
 public color leftC = color(0, 0, 0);
 public color rightC = color(0, 0, 0);
+public color[][] palettes = {
+  {color(58, 1, 92), color(79, 1, 71), color(53, 1, 44), color(41, 0, 37), color(17, 0, 28)},
+  {color(255, 106, 213), color(199, 116, 232), color(173, 140, 255), color(135, 149, 232), color(148, 208, 255)},
+  {color(34, 87, 122), color(56, 163, 165), color(87, 204, 153), color(128, 237, 153), color(199, 249, 204)},
+  {color(0, 117, 41), color(30, 88, 50), color(60, 59, 59), color(90, 30, 68), color(119, 0, 77)}
+  
+};
+;
 
 void setup() {
-  size(300, 300);
+  size(500, 500);
 }
 
 void draw() {
-  getPalette(gradientNum, axis);
+  getGradient(gradientNum, axis);
 }
 
 void keyPressed() {
   if (keyCode == LEFT && 0 < gradientNum){
     gradientNum--;
     System.out.println(gradientNum);
-    getPalette(gradientNum, axis);
+    getGradient(gradientNum, axis);
   }
 
-  if (keyCode == RIGHT && gradientNum < 5){
+  if (keyCode == RIGHT && gradientNum < 4){
     gradientNum++;
     System.out.println(gradientNum);
-    getPalette(gradientNum, axis);
+    getGradient(gradientNum, axis);
   }
   
-  if (keyCode == UP && gradientNum < 5){
+  if (keyCode == UP){
     axis = 0;
     System.out.println("up");
-    getPalette(gradientNum, axis);
+    getGradient(gradientNum, axis);
   }
 
-  if (keyCode == DOWN && gradientNum < 5){
+  if (keyCode == DOWN){
     axis = 1;
     System.out.println("down");
-    getPalette(gradientNum, axis);
+    getGradient(gradientNum, axis);
   }
 }
 
 //Uses the gradientNum to determine the gradient
-void getPalette(int i, int a) {
+void getGradient(int i, int a) {
   if (i == 0){
+    // Colour palette link: 
     // Gradient link: https://coolors.co/gradient-maker/ff1b6b-45caff
-    leftC = color(179, 20, 76);//255, 27, 107
-    rightC = color(55, 162, 204);//69, 202, 255
+    leftC = color(255, 27, 107);//255, 27, 107
+    rightC = color(69, 202, 255);//69, 202, 255
     makeGradient(leftC, rightC, a);
   }
   if (i == 1){
@@ -57,20 +66,17 @@ void getPalette(int i, int a) {
     makeGradient(leftC, rightC, a);
   }
   if (i == 2){
+    // Colour palette link: https://coolors.co/22577a-38a3a5-57cc99-80ed99-c7f9cc
     // Gradient link: https://coolors.co/gradient-maker/f7ba2c-ea5459
     leftC = color(247, 186, 44);
     rightC = color(234, 84, 89);
     makeGradient(leftC, rightC, a);
   }
   if (i == 3){
+    // Colour palette link: 
     // Gradient link: https://coolors.co/gradient-maker/bf0fff-cbff49
     leftC = color(191, 15, 255);
     rightC = color(203, 255, 73);
-    makeGradient(leftC, rightC, a);
-  }
-  if (i == 4){
-    leftC = color(10, 255, 100);
-    rightC = color(90, 100, 20);
     makeGradient(leftC, rightC, a);
   }
 }
@@ -99,6 +105,18 @@ void makeGradient(color c1, color c2, int axis ) {
       stroke(c);
       line(i, 0, i, height);
     }
+  }
+
+  drawPalette(gradientNum);
+}
+
+
+// Method for drawing the colour palette
+void drawPalette(int p){
+  for(int i = 0; i < 5; i++){
+    fill(palettes[p][i]);
+    noStroke();
+    square(i*100,400,100);
   }
 }
 

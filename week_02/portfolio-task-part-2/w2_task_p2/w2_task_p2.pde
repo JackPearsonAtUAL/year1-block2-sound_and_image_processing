@@ -24,19 +24,44 @@ void draw() {
     int[][] histogram = new int[3][256];
 
     for (int i = 0; i < sample.pixels.length && i < pixels.length; i++) {
-        int r = int(red(sample.pixels[i]));
-        int g = int(green(sample.pixels[i]));
-        int b = int(blue(sample.pixels[i]));
 
-        pixels[i] = color(r, g, b);
+        
+        if (i%10 == 0){
+            int r = 255 - int(red(sample.pixels[i]));
+            int g = 255 - int(green(sample.pixels[i]));
+            int b = 255 - int(blue(sample.pixels[i]));
+            pixels[i] = color(r, g, b);
 
-        histogram[0][r]++;
-        histogram[1][g]++;
-        histogram[2][b]++;
+            histogram[0][r]++;
+            histogram[1][g]++;
+            histogram[2][b]++;
+        }
+        else if(i%15 == 0){
+            int r = 0;
+            int g = 0;
+            int b = 0;
+            pixels[i] = color(r, g, b);
+
+            histogram[0][r]++;
+            histogram[1][g]++;
+            histogram[2][b]++;
+        }
+        else{
+            int r = int(red(sample.pixels[i]));
+            int g = int(green(sample.pixels[i]));
+            int b = int(blue(sample.pixels[i]));
+            pixels[i] = color(r, g, b);
+
+            histogram[0][r]++;
+            histogram[1][g]++;
+            histogram[2][b]++;
+        }
+
     }
 
     updatePixels();
 
+    /*
     int maxR = max(histogram[0]);
     int maxG = max(histogram[1]);
     int maxB = max(histogram[2]);
@@ -67,5 +92,5 @@ void draw() {
 
         float xPos = map(i, 0, 255, 0, width);
         line(xPos, startHeight, xPos, height);
-    }
+    }*/
 }
