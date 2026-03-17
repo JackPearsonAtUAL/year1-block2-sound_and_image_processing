@@ -54,8 +54,8 @@ void getGradient(int i, int a) {
   if (i == 0){
     // Colour palette link: 
     // Gradient link: https://coolors.co/gradient-maker/ff1b6b-45caff
-    leftC = color(255, 27, 107);//255, 27, 107
-    rightC = color(69, 202, 255);//69, 202, 255
+    leftC = color(255, 27, 107);
+    rightC = color(69, 202, 255);
     makeGradient(leftC, rightC, a);
   }
   if (i == 1){
