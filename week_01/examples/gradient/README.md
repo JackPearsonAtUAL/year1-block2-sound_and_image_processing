@@ -1,10 +1,14 @@
 # Week 1: Pixels and Colour
+AI was not used in the process of making this week's task.
 
 ## Controls
 
 LEFT (arrow) cycles left through the gradients
+
 RGHT (arrow) cycles right through the gradients
+
 UP (arrow) makes gradient go along the Y axis
+
 DOWN (arrow) makes the gradient go along the X axis
 
 ## Personal Thoughts and Reflection
