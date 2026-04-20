@@ -5,14 +5,18 @@ week_06/examples/dither/dither.pde
 
 Make sure the following library is installed
 Video Library for Processing 4 
+
+This piece is interective:
+  pressing the (S) key saves the image
+  pressing the (Enter)/(Return) key changes the filter
 */
 
 import processing.video.*;
 
+public int filterNum = 0;
+
 public Capture cam;
 PImage newimage;
-
-
 
 void setup() {
   size(640, 480);
@@ -55,6 +59,7 @@ void draw() {
   newimage = createImage(width, height, RGB);
   newimage.loadPixels();
   for(int i = 0; i < cam.pixels.length; i++) {
+    color originalColours = color(cam.pixels[i]);
     float greyValue = red(cam.pixels[i]); // Makes camera output greyscale
     
     // threshold pixel to either black or white.
@@ -66,9 +71,27 @@ void draw() {
 
     float error = greyValue - newPixelValue;
     
-    newimage.pixels[i] = color(newPixelValue); // Makes the newimage pixel's greyscale
-    
+    newimage.pixels[i] = color(newPixelValue);
+
+    // Aplies the dithering
     atkinsonDither(i, error);
+
+    if (filterNum == 0){
+      color colA = color(255, 0, 0);
+      color colB = color(0, 255, 255);
+      newimage.pixels[i] = duotone(newimage.pixels[i], colA, colB);
+    }
+    else if (filterNum == 1){
+      color colA = color(0, 255, 0);
+      color colB = color(255, 0, 255);
+      newimage.pixels[i] = duotone(newimage.pixels[i], colA, colB);
+    }
+    else if (filterNum == 2){
+      color colA = color(0, 0, 255);
+      color colB = color(255, 255, 0);
+      newimage.pixels[i] = duotone(newimage.pixels[i], colA, colB);
+    }
+
   }
   updatePixels();
   
@@ -79,6 +102,13 @@ void keyPressed() {
   // pressing S will save the current frame to disk
   if(key == 's') {
     saveFrame("frame-######.jpg");
+  }
+  if (keyCode == ENTER || keyCode == RETURN){   
+    filterNum++;
+
+    if (filterNum > 2){
+      filterNum = 0;
+    }
   }
 }
 
@@ -130,4 +160,12 @@ void atkinsonDither(int i, float error) {
       pixels[neighbourIndex] = color(neighbourGrey + (error/8.0));
     }
   }
+}
+
+color duotone(color pixel, color colorA, color colorB) {
+  float tone = red(pixel);
+  
+  float lerpAmount = norm(tone,0,255);
+  
+  return lerpColor(colorA, colorB, lerpAmount);
 }
