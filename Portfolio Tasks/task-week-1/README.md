@@ -2,12 +2,7 @@
 ## Disclaimer
 AI was not used in the process of making this week's task.
 
-## Directory contents
-
-* Code sample for the gradient is in `examples/gradient`
-
-## Week 1 Task
-
+## Task
 Experiment with the code in `examples/gradient`
 
 1. Imagine you're desingning branding for a computational art gallery.

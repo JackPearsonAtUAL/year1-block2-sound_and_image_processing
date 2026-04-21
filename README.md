@@ -4,13 +4,7 @@ https://git.arts.ac.uk/mtanska/25-26-sip
 ### Disclaimer
 Unless stated withing a week's ReadMe.md, AI has not been used to generate, debug or modify any of the code provided.
 
-### Weekly Tasks
-Information for each weekly task is heald within 
+### Portfolio Tasks
+To view the portfolio tasks for each week, please check out the `/Portfolio Tasks` folder for each individual week.
 
-Week 1: `week_01/readme.md`
-
-Week 2: `week_02/readme.md` 
-
-Week 3: `week_03/readme.md` 
-
-Week 4: `week_04/readme.md` 
+Each week's task can be found inside a subfolder named after said week. 
