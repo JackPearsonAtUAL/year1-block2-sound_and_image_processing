@@ -4,6 +4,7 @@ Histograms
 Jack Pearson; Maksym Kheilik
 */
 
+import java.util.ArrayList; // Import the ArrayList class
 PImage sample;
 
 // settings() runs before setup() and is meant specifically for dynamic sizing
@@ -24,10 +25,7 @@ void setup() {
         for (int x = 0; x < sample.width; x++) {
             row[x] = sample.pixels[y * sample.width + x];
         }
-        // Bubble sort by hue
-        for (){
-            
-        }
+        row = sort(row);
         // Write back
         for (int x = 0; x < sample.width; x++) {
             sample.pixels[y * sample.width + x] = row[x];
