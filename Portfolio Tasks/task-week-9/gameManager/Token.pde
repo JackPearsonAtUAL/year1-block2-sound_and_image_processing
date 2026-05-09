@@ -1,13 +1,15 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.awt.*;
+import java.awt.geom.*;
+
 class Token{
-    float[] startPos;
-    float[] position = startPos;
+    float[] position;
+    Rectangle2D.Float r;
+    Ellipse2D.Float e;
 
-    int speed = 1;
+    int speed = 2;
     int value;
-
-    void setup(float[] sp){
-        startPos = sp;
-    }
 
     void update(){
         move();
@@ -16,20 +18,34 @@ class Token{
 
     void drawToken(){
         if (value == 1){
-            square(position[0]/2, position[1]/2, 5);
+            r = new Rectangle2D.Float(position[0], position[1], 10, 10);
+
+            float x = (float) r.getX();
+            float y = (float) r.getY();
+            float w = (float) r.getWidth();
+            float h = (float) r.getHeight();
+
+            rect(x, y, w, h);
         }
 
         if (value == 5){
-            circle(position[0]/2, position[1]/2, 5);
+            e = new Ellipse2D.Float(position[0], position[1], 10, 10);
+                        
+            float x = (float) e.getX();
+            float y = (float) e.getY();
+            float w = (float) e.getWidth();
+            float h = (float) e.getHeight();
+
+            ellipse(x, y, w, h);
         }
     }
 
     void move(){
         if (value == 1){
-            position[1] -= speed;
+            position[1] += speed;
         }
         if (value == 5){
-            position[1] -= speed * 2;
+            position[1] += speed * 2;
         }
         
     }

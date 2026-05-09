@@ -1,11 +1,16 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.awt.*;
+import java.awt.geom.*;
+
 public class Player{
-    float[] playerDimensions;
-    float[] playerXConstraints;
+    float[] dim; // Player dimensions
+    float[] con; //player x axis Constraints
+    Rectangle2D.Float r;
+
     // [0] is left move, [1] is right move
     boolean[] playerMovement = {true, true};
-    float[] playerPosition;
-  
-    int score = 0;
+    float[] pos; // player position
 
     int direction = 0; // -1 is left, 0 is static, 1 is right
     float speed = 5; // multiplier used in movement
@@ -30,26 +35,23 @@ public class Player{
             direction = 0;
         }
         
-        playerPosition[0] += direction * speed;
+        pos[0] += direction * speed;
     }
 
     public void checkConstraints(){
-        for (int x = 0; x < playerXConstraints.length; x++){
-            if (x == 0 && (playerPosition[0]-(playerDimensions[0]/2)) <= playerXConstraints[x]){
-                playerPosition[0] = playerXConstraints[x]+(playerDimensions[0]/2);
+        for (int x = 0; x < con.length; x++){
+            if (x == 0 && (pos[0]-(dim[0]/2)) <= con[x]){
+                pos[0] = con[x]+(dim[0]/2);
             }
             
-            if (x == 1 && (playerPosition[0]+(playerDimensions[0]/2)) >= playerXConstraints[x]){
-                playerPosition[0] = playerXConstraints[x]-(playerDimensions[0]/2);
+            if (x == 1 && (pos[0]+(dim[0]/2)) >= con[x]){
+                pos[0] = con[x]-(dim[0]/2);
             }
         }
-        
-        println(playerMovement);
     }
 
-    public void drawPlayer(){
-    //rect(player.playerPosition[0] - (player.playerDimensions[0]/2), player.playerPosition[1], player.playerPosition[0] + (player.playerDimensions[0]/2), player.playerPosition[1] + player.playerDimensions[1]);
-    
-    square(player.playerPosition[0]-(player.playerDimensions[1]/2), player.playerPosition[1], player.playerDimensions[1]);
-}
+    public void drawPlayer(){ 
+        r = new Rectangle2D.Float((pos[0] - (dim[0]/2)), (pos[1]), (dim[0]), (dim[1]));
+        rect((pos[0] - (dim[0]/2)), (pos[1]), (dim[0]), (dim[1]));
+    }
 }
