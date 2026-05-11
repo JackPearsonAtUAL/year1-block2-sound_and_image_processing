@@ -46,6 +46,6 @@ void draw(){
     // Hi-hat on eighth beat
     if (frameCount % 8 == 0) {
        hihat.play(); 
-       square(width/2, height/2, 100);
+       square((width/2)-50, (height/2)-50, 100);
     }  
 }

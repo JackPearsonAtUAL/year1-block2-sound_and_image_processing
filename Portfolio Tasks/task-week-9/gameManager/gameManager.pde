@@ -1,18 +1,17 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.awt.*;
 import java.awt.geom.*;
 import java.time.LocalTime;
-
 
 public Player player = new Player();
 public ArrayList<Token> tokens = new ArrayList<Token>(0);
 public int score = 0;
 
-public double timeLimit = 30; // Time limit in seconds
-public double timeLeft;
+public int timeLimit = 30; // Time limit in seconds
+public int timeLeft;
 boolean gameRunning;
 boolean endTextDisplay = false;
+int frames;
 
 void setup(){
     gameRunning = true;
@@ -20,6 +19,7 @@ void setup(){
     colorMode(RGB);
     size(800, 500);
     frameRate(60);
+    frames = int(frameRate);
 
     textSize(20); 
 
@@ -31,14 +31,14 @@ void setup(){
     player.pos = new float[]{width/2, height-(50+player.dim[1])};
     
     drawScene();
+    println(frames);
 }
 
 void draw(){  
     if (timeLeft > 0){
-        if (frameCount%60 == 0){
+        if (frameCount % frames == 0){
             timeLeft -= 1;
         }
-
 
         drawScene();
         
