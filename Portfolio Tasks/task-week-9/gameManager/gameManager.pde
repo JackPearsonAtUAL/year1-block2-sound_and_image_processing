@@ -9,7 +9,7 @@ public Player player = new Player();
 public ArrayList<Token> tokens = new ArrayList<Token>(0);
 public int score = 0;
 
-public double timeLimit = 20; // Time limit in seconds
+public double timeLimit = 30; // Time limit in seconds
 public double timeLeft;
 boolean gameRunning;
 boolean endTextDisplay = false;
@@ -52,13 +52,13 @@ void draw(){
             t.update();
 
             // Square token collider logic
-            if (t.value == 1 && t.r.intersects(player.r)){
+            if ((t.value == 1 || t.value == -1) && t.r.intersects(player.r)){
                 score += t.value;
                 println(score);
                 i.remove();
             }
             // Elliptical token collider logic
-            else if (t.value == 5 && t.e.intersects(player.r)){
+            else if ((t.value == 5 || t.value == -5) && t.e.intersects(player.r)){
                 score += t.value;
                 println(score);
                 i.remove();
@@ -90,12 +90,18 @@ void genToken(){
     int i = intGen(0);
     if (i == 1){
         Token t = new Token();
-        i = intGen(1);
-        if(i <8){
+        i = intGen(2);
+        if(i <10){
             t.value = 1;
         }
-        else{
+        else if (10 <= i && i < 16){
             t.value = 5;
+        }
+        else if (16 <= i && i < 19){
+            t.value = -1;
+        }
+        else if (19 <= i){
+            t.value = -5;
         }
         t.position = new float[]{map(intGen(0), 0, 100, 10, width - 20), 0};
         tokens.add(t);
@@ -109,6 +115,9 @@ int intGen(int k){
     }
     if (k == 1){
         return (int)(Math.random() * 101)/10; 
+    }
+    if (k == 2){
+        return (int)(Math.random() * 101)/5;
     }
     return 0;
 }

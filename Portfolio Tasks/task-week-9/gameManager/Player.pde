@@ -51,6 +51,7 @@ public class Player{
     }
 
     public void drawPlayer(){ 
+        fill(255);
         r = new Rectangle2D.Float((pos[0] - (dim[0]/2)), (pos[1]), (dim[0]), (dim[1]));
         rect((pos[0] - (dim[0]/2)), (pos[1]), (dim[0]), (dim[1]));
     }
