@@ -31,7 +31,6 @@ void setup(){
     player.pos = new float[]{width/2, height-(50+player.dim[1])};
     
     drawScene();
-    println(frames);
 }
 
 void draw(){  
@@ -54,13 +53,11 @@ void draw(){
             // Square token collider logic
             if ((t.value == 1 || t.value == -1) && t.r.intersects(player.r)){
                 score += t.value;
-                println(score);
                 i.remove();
             }
             // Elliptical token collider logic
             else if ((t.value == 5 || t.value == -5) && t.e.intersects(player.r)){
                 score += t.value;
-                println(score);
                 i.remove();
             } 
         } 
