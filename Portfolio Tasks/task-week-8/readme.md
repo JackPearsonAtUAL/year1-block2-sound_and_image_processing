@@ -1,10 +1,11 @@
 # Week 8: Algorithmic music and sampling
-## Directory contents
+## Disclaimer
+AI was not used in the process of making this week's task.
 
+## Directory contents
 * [code examples](./examples)
 
 ## Week 8 Task
-
 Using at least 4 samples, create a drum pattern. Make the pattern change in time. You could do that by:
     - adding an element of randomness to at least one of the samples,
     - alternate the pattern depending on time, e.g. count bars based on frameCount, seconds or milliseconds
@@ -21,3 +22,12 @@ How to start (optional prompts):
 
 ** Have a look at the additional resources on Moodle **
 (articles, free sample sources, technical documentation)
+
+## Personal Thoughts and Reflection
+For this week, I chose to use AC / DC's song 'Back In Black' for the drum pattern. I mostly chose this song, as it has a simple and easy to edit 4 beat per bar chord, with the addition of every 8 beats a snare drum. 
+
+To make this drum progression change, I added an element of contained ranndomness. Every draw() cycle the rate(), processing's audio play speed, for each audio sample.
+
+Orignially this random element was going to affect each sample's amp(), processing's audio volume. However, I did not like how this turned out as, even with a min/max value, the volume would sometimes be too quiet or not change enough.
+
+This is why I decided on rate(). There are 4 different values it can use and each are distinctly different from one another. These values are 0 (nothing plays), 0.5 (half speed), 1 (normal speed) and 2 (double speed).

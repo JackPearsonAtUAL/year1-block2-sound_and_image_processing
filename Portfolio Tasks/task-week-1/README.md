@@ -15,14 +15,13 @@ Experiment with the code in `examples/gradient`
 For the portfolio, submit at least 5 gradient variations. Include notes about your design and learning process, and how you'd develop it further.
 
 ## Controls
+    LEFT (arrow) cycles left through the gradients
 
-LEFT (arrow) cycles left through the gradients
+    RGHT (arrow) cycles right through the gradients
 
-RGHT (arrow) cycles right through the gradients
+    UP (arrow) makes gradient go along the Y axis
 
-UP (arrow) makes gradient go along the Y axis
-
-DOWN (arrow) makes the gradient go along the X axis
+    DOWN (arrow) makes the gradient go along the X axis
 
 ## Personal Thoughts and Reflection
 I want to preface this by having it known that I initially misunderstood the assignment brief for this week. I thought it said that I needed to find 3 - 5 colour palettes and create a gradient to go with each one, hence why there are four entirely different gradients & palettes.  

@@ -22,30 +22,60 @@ void setup(){
     hihat = new SoundFile(this, "../samples/sample_plucked_glass.wav");
 
     // crashCym = crash simble file
+
+    // Set framerate
     frameRate(myFrameRate);
 }
 
 void draw(){
-    background(random(255), random(255), random(255));    
-    
     // Crash cymbal at the start
     /*if(frameCount == 0){
+        crashCym.rate(1)
         crashCym.play();
     }*/
 
     // Bass on all odd beats
     if (frameCount % 2 != 0) {
+        background(0);
+        bass.rate(rateChanger());
         bass.play();
     }
 
     // 'Snare' on very even beat
     if (frameCount % 2 == 0) {
+        background(255);
+        
+        // Hi-hat on eighth beat
+        if (frameCount % 8 == 0) {
+            hihat.rate(rateChanger());
+            hihat.play(); 
+            fill(255, 0, 255);
+            square((width/2)-50, (height/2)-50, 100);
+        }  
+
+        snare.rate(rateChanger());
         snare.play();
+    }   
+}
+
+float rateChanger(){
+    float newRate = (float)Math.random();
+    newRate = map(newRate, 0, 1, 0.5, 1.5);
+
+    // Half speed
+    if (newRate <= 0.75){
+        return newRate = 0.5;
     }
-    
-    // Hi-hat on eighth beat
-    if (frameCount % 8 == 0) {
-       hihat.play(); 
-       square((width/2)-50, (height/2)-50, 100);
-    }  
+
+    // Normal speed
+    if (newRate > 0.75 && newRate < 1.25 ){
+        return newRate = 1;
+    }
+
+    // Fast speed
+    if (newRate >= 1.25){
+        return newRate = 2;
+    }
+
+    return 1;
 }

@@ -1,7 +1,8 @@
 # Sound and Image Processing
 ### Lecture Material Location
 https://git.arts.ac.uk/mtanska/25-26-sip 
-### Disclaimer
+
+## **Disclaimer**
 Unless stated withing a week's ReadMe.md, AI has not been used to generate, debug or modify any of the code provided.
 
 ### Portfolio Tasks

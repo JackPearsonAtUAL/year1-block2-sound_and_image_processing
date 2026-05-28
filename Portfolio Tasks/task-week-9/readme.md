@@ -1,10 +1,11 @@
 # Week 9: Vectors and movement
-## Directory contents
+## Disclaimer
+AI was used as a search engine tool for researching and nothing further.
 
+## Directory contents
 * [code examples](./examples)
 
 ## Week 9 Task
-
 Feel free to work in pairs (please add a comment about it in your sketch if you do).
 
 **Make a game using all of the below:**
@@ -33,9 +34,9 @@ Feel free to use the prompts below or use your own idea. You can also start with
 **Links to resources & technical references on Moodle :)**
 
 ## Controls
+    LArrow to move left
 
-LArrow to move left
-RArrow to move right
+    RArrow to move right
 
 ## Game Idea
 ### Concept

@@ -7,7 +7,6 @@ Make sure the following library is installed
 Video Library for Processing 4 
 
 ## Task
-
 - Implement a real-time image processing system using your webcam.
 - Combine a dithering algorithm with one of the filters we looked at in Week 4.
 - The processed image should update continuously as the webcam feed changes, showing both the dithering effect and the selected filter.
@@ -16,10 +15,9 @@ Video Library for Processing 4
 - Add a frame drawn in Processing to the camera feed.
 
 ## Controls
+    S saves the current image
 
-S saves the current image
-
-ENTER / RETURN changes to the next filter
+    ENTER / RETURN changes to the next filter
 
 ## Personal Thoughts and Reflection
 For this week, I was stuck trying to figure out the best filter to work with the dithering algorithms. At first I tried to use the invert colours filter, however it either stopped the dithering occuring, or broke the code. This was due to dithering oly working on images made of two colors.

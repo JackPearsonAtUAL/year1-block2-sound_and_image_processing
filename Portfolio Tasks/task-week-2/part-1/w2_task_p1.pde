@@ -5,6 +5,8 @@ Jack Pearson; Maksym Kheilik
 */
 
 PImage sample;
+boolean grayscale = true; // Only used for the greyscale swapping
+int[][] histogram = new int[3][256];
 
 // settings() runs before setup() and is meant specifically for dynamic sizing
 void settings() {
@@ -18,21 +20,33 @@ void setup() {
 }
 
 void draw() {
+    //drawImageRGB();// RGB histogram
+    drawImageYCM();// YCM / CMY histogram 
+}
+
+void drawImageRGB(){
     sample.loadPixels();
     loadPixels();
 
-    int[][] histogram = new int[3][256];
+    histogram = new int[3][256];
 
     for (int i = 0; i < sample.pixels.length && i < pixels.length; i++) {
 
         int r = int(red(sample.pixels[i]));
         int g = int(green(sample.pixels[i]));
         int b = int(blue(sample.pixels[i]));
-        pixels[i] = color(r, g, b);
 
         histogram[0][r]++;
         histogram[1][g]++;
         histogram[2][b]++;
+
+        pixels[i] = color(r, g, b);
+
+        /*
+        Old code; it works, but is irrelevant to the task
+        if(grayscale){pixels[i] = color(int(red(sample.pixels[i])));}
+        else{pixels[i] = color(r, g, b);}*/
+
 
     }
     updatePixels();
@@ -42,31 +56,86 @@ void draw() {
     int maxG = max(histogram[1]);
     int maxB = max(histogram[2]);
 
-    // Draw Red Histogram
+    // Draw the three Histograms
     for (int i = 0; i < 256; i++) {
+        // Red
         stroke(255, 0, 0, 150);
         float startHeight = map(histogram[0][i], 0, maxR, height, height - (height / 3));
 
         // Map 'i' (0-255) to the full width of the canvas
         float xPos = map(i, 0, 255, 0, width);
         line(xPos, startHeight, xPos, height);
-    }
 
-    // Draw Green Histogram
-    for (int i = 0; i < 256; i++) {
+
+        // Green
         stroke(0, 255, 0, 150);
-        float startHeight = map(histogram[1][i], 0, maxG, height, height - (height / 3));
+        startHeight = map(histogram[1][i], 0, maxG, height, height - (height / 3));
 
-        float xPos = map(i, 0, 255, 0, width);
+        // Map 'i' (0-255) to the full width of the canva
+        xPos = map(i, 0, 255, 0, width);
+        line(xPos, startHeight, xPos, height);
+
+        // Blue
+        stroke(0, 0, 255, 150);
+        startHeight = map(histogram[2][i], 0, maxB, height, height - (height / 3));
+
+        // Map 'i' (0-255) to the full width of the canva
+        xPos = map(i, 0, 255, 0, width);
         line(xPos, startHeight, xPos, height);
     }
+}
 
-    // Draw Blue Histogram
+void drawImageYCM(){
+    sample.loadPixels();
+    loadPixels();
+
+    histogram = new int[3][256];
+
+    for (int i = 0; i < sample.pixels.length && i < pixels.length; i++) {
+
+        int r = int(red(sample.pixels[i]));
+        int g = int(green(sample.pixels[i]));
+        int b = int(blue(sample.pixels[i]));
+
+        histogram[0][r]++;
+        histogram[1][g]++;
+        histogram[2][b]++;
+
+        pixels[i] = color(r, g, b);
+
+    }
+    updatePixels();
+
+    
+    int maxR = max(histogram[0]);
+    int maxG = max(histogram[1]);
+    int maxB = max(histogram[2]);
+
+    // Draw the three Histograms
     for (int i = 0; i < 256; i++) {
-        stroke(0, 0, 255, 150);
-        float startHeight = map(histogram[2][i], 0, maxB, height, height - (height / 3));
+        // Yellow
+        stroke(255, 255, 0, 150);
+        float startHeight = map((histogram[0][i] + histogram[1][i])/2, 0, maxR, height, height - (height / 3));
 
+        // Map 'i' (0-255) to the full width of the canvas
         float xPos = map(i, 0, 255, 0, width);
+        line(xPos, startHeight, xPos, height);
+
+
+        // Cyan
+        stroke(0, 255, 255, 150);
+        startHeight = map((histogram[1][i] + histogram[2][i])/2, 0, maxG, height, height - (height / 3));
+
+        // Map 'i' (0-255) to the full width of the canva
+        xPos = map(i, 0, 255, 0, width);
+        line(xPos, startHeight, xPos, height);
+
+        // Magenta
+        stroke(255, 0, 255, 150);
+        startHeight = map((histogram[0][i] + histogram[2][i])/2, 0, maxB, height, height - (height / 3));
+
+        // Map 'i' (0-255) to the full width of the canva
+        xPos = map(i, 0, 255, 0, width);
         line(xPos, startHeight, xPos, height);
     }
 }
