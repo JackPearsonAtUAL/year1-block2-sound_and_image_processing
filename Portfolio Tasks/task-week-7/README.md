@@ -1,11 +1,12 @@
-# Week 7 Lecture code examples
-Code by Tom Armitage
+# Week 7: Digital Sound and Oscillation
+## Directory contents
 
-Several code examples in this week's lecture, so this serves as an index for
-them:
+* [code examples](./examples)
 
-* `oscillator_demos` is the demo of different oscillators. Swap to FFT view with the TAB key.
-* `noise_demos` is the same, but for different types of noise.
-* `wav_demo` is the same, but for a wav file.
-* `simple_osc_filter_demo` is the simple Processing's Sound library demo of
-  controlling oscillators pitch, amplitude, and of using filters.
+## Week 7 Task
+
+1. (Required minimum) Using at least 3 oscillators and/or filters, try to design a sound for a sci-fi movie, when the main characters arrive onto a new planet. <br><br>Frequency modulation - alternate the frequency over time<br>
+Feel free to add filters if you want to.<br>
+
+**Please note: there are a lot of examples in the repository. You're not expected to immediately understand all of them. Feel free to use them as a reference, but please make sure you understand the basic ones first.**
+2. (A bit more advanced) Pick a sketch from one of the previous weeks. Try to use the output from an oscillator as a parameter for the sketch. You may need to map it to a different domain. You can use it for example to control colour, shape or size of elements in your sketch.

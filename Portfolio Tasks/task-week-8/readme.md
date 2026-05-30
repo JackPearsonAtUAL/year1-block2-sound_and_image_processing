@@ -31,3 +31,7 @@ To make this drum progression change, I added an element of contained ranndomnes
 Orignially this random element was going to affect each sample's amp(), processing's audio volume. However, I did not like how this turned out as, even with a min/max value, the volume would sometimes be too quiet or not change enough.
 
 This is why I decided on rate(). There are 4 different values it can use and each are distinctly different from one another. These values are 0 (nothing plays), 0.5 (half speed), 1 (normal speed) and 2 (double speed).
+
+After obta8ining some new samples, I swapped the original sound files for actual drum samples. However I had an idea. What if I had the old sound files randomly play instead of the new? I did this by setting up a random number generator, which is fed into an if condition, that will determine which sond file plays.
+
+Once this was completed, I went to test this out. I tried out three different variation, and found that the rate(0.5) sounded terrible with the new randomness. Therefore I made it so that the rate would either be 1 or 2, which works much better. Out of the 3 different demo videos I made this week, I prefer the random speed on it's own, followed by the random instruments. I found that putting together both random variables resulted in a cacophony.
