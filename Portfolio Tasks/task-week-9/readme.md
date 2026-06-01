@@ -2,10 +2,7 @@
 ## Disclaimer
 AI was used as a search engine tool for researching and nothing further.
 
-## Directory contents
-* [code examples](./examples)
-
-## Week 9 Task
+## Task
 Feel free to work in pairs (please add a comment about it in your sketch if you do).
 
 **Make a game using all of the below:**

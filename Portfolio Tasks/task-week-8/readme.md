@@ -2,9 +2,6 @@
 ## Disclaimer
 AI was not used in the process of making this week's task.
 
-## Directory contents
-* [code examples](./examples)
-
 ## Week 8 Task
 Using at least 4 samples, create a drum pattern. Make the pattern change in time. You could do that by:
     - adding an element of randomness to at least one of the samples,

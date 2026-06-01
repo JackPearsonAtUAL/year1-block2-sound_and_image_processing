@@ -2,11 +2,7 @@
 ## Disclaimer
 AI was not used in the process of making this week's task.
 
-## Directory contents
-
-* Code sample for the 1D Noise, 2D Noise and filtering examples are in `examples/`
-
-## Week 4 Task
+## Task
 Using noise and primitive shapes, create an animated scene in 2D (standard) or 3d (advanced).
 
 Extra:

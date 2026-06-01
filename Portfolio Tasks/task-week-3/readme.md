@@ -6,7 +6,7 @@ AI was not used in the process of making this week's task.
 
 * Code sample for the anti-alias, pushpopMatrix and blend examples are in `examples/`
 
-## Week 3 Portfolio Task
+## Task
 
 Using Processing, make an abstract artwork. It should:
 - Use at least 3 different primitives,

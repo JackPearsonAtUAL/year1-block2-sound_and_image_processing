@@ -13,7 +13,7 @@ void setup(){
   rectMode(CENTER);
   colorMode(RGB);
 
-  // Integral to delaying the drawing of the stars
+  // Integral to delaying the drawing of the snow
   frameRate(60);
   frames = int(frameRate);
 }
@@ -24,15 +24,14 @@ void draw(){
   updateMain();
 }
 
-void updateMain(){   
-  //drawStars();     
+void updateMain(){       
   drawAroura();
 
   for (Iterator<Snow> i = snowflakes.iterator(); i.hasNext();){
     Snow s = i.next();
     s.update(frameCount);
 
-    // Square token collider logic
+    // Snow despawn logic
     if (s.position[1] > height+20){
         i.remove();
     }

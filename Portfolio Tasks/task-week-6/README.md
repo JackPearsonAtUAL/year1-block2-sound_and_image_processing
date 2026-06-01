@@ -33,3 +33,5 @@ After deliberating for a bit and looking back on previous projects, I decided to
 Out of the three I like the 3rd one(Blue/Yellow) the most. It is the most comfortable on the eyes and also reminds me of how dogs see colour, as they have protanopia colour blindness. 
 
 Now I would like to apologise for the video demo quality. I couldn't figure out why it looks so low res. I think it's to do with the file being compressed, especially with the already grainy and monochromatic picture, but I'm not too sure.
+
+Now for the comic strip, I chose to use the Yellow/Blue filter, as it has the highest clarity of the 3 I made. I had no idea what to do for the comic strip itself, so, I spent a while deliberating on what to do. Eventually I came up with the idea to take screenshots of myself applying makeup to one of my eyes. Appologies if that isn't too clear in the images, that's just the side effect of using a dithering algorithm and a dunotone filter.
