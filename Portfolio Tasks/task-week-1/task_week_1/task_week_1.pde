@@ -1,6 +1,7 @@
 //Gradient variables
 public int axis = 1;
 public int gradientNum = 0;
+public boolean isCircle = false;
 public int lastGradient;
 
 //Colour variables
@@ -38,14 +39,16 @@ void keyPressed() {
   
   if (keyCode == UP){
     axis = 0;
-    System.out.println("up");
     getGradient(gradientNum, axis);
   }
 
   if (keyCode == DOWN){
     axis = 1;
-    System.out.println("down");
     getGradient(gradientNum, axis);
+  }
+
+  if (keyCode == 32){
+    isCircle = !isCircle;
   }
 }
 
@@ -90,20 +93,52 @@ void makeGradient(color c1, color c2, int axis ) {
 
   noFill();
 
-  if (axis == 0) {  // Top to bottom gradient
-    for (int i = 0; i <= 0+height; i++) {
-      float inter = map(i, 0, height, 0, 1);
-      color c = lerpColor(c1, c2, inter);
-      stroke(c);
-      line(0, i, width, i);
+  if (!isCircle){
+    if (axis == 0) {  // Top to bottom gradient
+      for (int i = 0; i <= 0+height; i++) {
+        // Get the value of the current pixel column and put it as a percentage, 
+        //  represented by a float between 0 and 1
+        float inter = map(i, 0, height, 0, 1); 
+        
+        // Claculate the colour based between the two chosen, 
+        //  using inter to determine where on the gradient the colour lies
+        color c = lerpColor(c1, c2, inter);
+        
+        stroke(c);
+        line(0, i, width, i);
+      }
+    }  
+    else if (axis == 1) {  // Left to right gradient
+      for (int i = 0; i <= 0+width; i++) {
+        float inter = map(i, 0, width, 0, 1);
+        color c = lerpColor(c1, c2, inter);
+        stroke(c);
+        line(i, 0, i, height);
+      }
     }
-  }  
-  else if (axis == 1) {  // Left to right gradient
-    for (int i = 0; i <= 0+width; i++) {
-      float inter = map(i, 0, width, 0, 1);
-      color c = lerpColor(c1, c2, inter);
-      stroke(c);
-      line(i, 0, i, height);
+  }
+  else{
+    if (axis == 0){
+      int maxRadius = width;
+    
+      for (int r = maxRadius; r > 0; r--) {
+        // Calculate the position of the current radius (0 to 1)
+        float pos = map(r, 0, maxRadius, 0, 1);
+        color currentColor = lerpColor(c1, c2, pos);
+        fill(currentColor);
+        ellipse(width/2, height/2, r*2, r*2);
+      }
+    }
+    else{
+      int maxRadius = width;
+    
+      for (int r = maxRadius; r > 0; r--) {
+        // Calculate the position of the current radius (0 to 1)
+        float pos = map(r, 0, maxRadius, 0, 1);
+        color currentColor = lerpColor(c2, c1, pos);
+        fill(currentColor);
+        ellipse(width/2, height/2, r*2, r*2);
+      }
     }
   }
 
