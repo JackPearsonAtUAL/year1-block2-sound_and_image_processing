@@ -1,29 +1,40 @@
 import processing.sound.*;
 
-SawOsc oscillator;
-LowPass filter;
+SawOsc[] oscillators = new SawOsc[3];
+LowPass[] filters = new LowPass[3];
+float[] amps = {1, 0, 0.2};
+float[] freqs = {1250, 0, 1};
+
+/* Frequencies:
+Main osc = 1246 <= 1250 < 1270
+Background osc
+Supporting osc
+*/
+
+/* Amps:
+Main osc = 
+Background osc
+Supporting osc
+*/
+
 
 void setup() {
   size(400,400);
   
-  oscillator = new SawOsc(this);
-  // more about filters in Processing: https://processing.org/reference/libraries/sound/index.html
-  filter = new LowPass(this);
+  for (int i = 0; i < oscillators.length; i++){
+    oscillators[i] = new SawOsc(this);
+    // more about filters in Processing: https://processing.org/reference/libraries/sound/index.html
+    filters[i] = new LowPass(this);
+    
+    filters[i].process(oscillators[i]);
   
-  filter.process(oscillator);
-  
-  oscillator.freq(440);
-  oscillator.amp(0.5);
-  
-  oscillator.play();
+    oscillators[i].freq(freqs[i]);
+    oscillators[i].amp(amps[i]);
+    
+    oscillators[i].play();
+  }
 }
 
 void draw() {
   background(0);
-}
-
-void mouseMoved() {
-  //oscillator.freq(map(mouseX,0,width,80,2000));
-  //oscillator.amp(map(mouseY,0,height,0.8,0));
-  filter.freq(map(mouseX,0,width,50,6000));
 }
