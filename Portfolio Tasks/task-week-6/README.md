@@ -31,3 +31,5 @@ My first variation of this used a Red/Cyan filter, where Black was replaced with
 After deliberating for a bit and looking back on previous projects, I decided to make it so that upon pressing the ENTER / RETURN key, the filter would cycle forward. As for the other filter variations, I decided to make a pattern where Black is replaced by either Red/Green/Blue and White is replaced by the combination of the other two. 
 
 Out of the three I like the 3rd one(Blue/Yellow) the most. It is the most comfortable on the eyes and also reminds me of how dogs see colour, as they have protanopia colour blindness. 
+
+Now I would like to apologise for the video demo quality. I couldn't figure out why it looks so low res. I think it's to do with the file being compressed, especially with the already grainy and monochromatic picture, but I'm not too sure.
