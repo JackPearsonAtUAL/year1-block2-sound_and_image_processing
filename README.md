@@ -1,6 +1,6 @@
 # Sound and Image Processing
-### Lecture Material Location
-https://git.arts.ac.uk/mtanska/25-26-sip 
+### Github Repository Link
+https://github.com/JackPearsonAtUAL/year1-block2-sound_and_image_processing.git
 
 ## **Disclaimers**
 At the start of each week's readme.md there will be a short AI disclaimer.
